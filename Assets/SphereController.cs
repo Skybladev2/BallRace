@@ -2,12 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SphereController : MonoBehaviour
 {
     public float Torque;
     public float MaxAngularVelocity;
     public Camera Camera;
+
+    public Text SpeedText;
+
     private Rigidbody _rigidbody;
     private Vector3 _mousePos;
     private Vector3 _playerToCameraVector;
@@ -32,7 +36,12 @@ public class SphereController : MonoBehaviour
         var cameraToPlayer = (this.transform.position - Camera.transform.position).normalized;
         ProcessInput(cameraToPlayer);
 
-        //Debug.Log(_rigidbody.velocity);
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        SpeedText.text = _rigidbody.velocity.magnitude.ToString();
     }
 
     private void ProcessInput(Vector3 cameraToPlayer)
@@ -58,19 +67,6 @@ public class SphereController : MonoBehaviour
             _rigidbody.angularDrag = _initialAngularDrag;
         }
     }
-
-    //private void ProcessMouseInput(Vector3 cameraToPlayer)
-    //{
-    //    if (Input.GetMouseButton(0))
-    //    {
-    //        _rigidbody.AddTorque(cameraToPlayer.z * Torque, 0, -cameraToPlayer.x * Torque);
-    //    }
-
-    //    if (Input.GetMouseButton(1))
-    //    {
-    //        _rigidbody.AddTorque(-cameraToPlayer.z * Torque, 0, cameraToPlayer.x * Torque);
-    //    }
-    //}
 
     private void RotateCamera()
     {
