@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SphereController : MonoBehaviour
@@ -32,11 +33,20 @@ public class SphereController : MonoBehaviour
     void Update()
     {
         CheckForExit();
+        CheckForLevelRestart();
         RotateCamera();
         var cameraToPlayer = (this.transform.position - Camera.transform.position).normalized;
         ProcessInput(cameraToPlayer);
 
         UpdateUI();
+    }
+
+    private void CheckForLevelRestart()
+    {
+        if (Input.GetKey(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     private void UpdateUI()
