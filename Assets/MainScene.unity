@@ -1385,6 +1385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Torque: 10
+  MaxAngularVelocity: 20
   Camera: {fileID: 255775523}
 --- !u!1001 &1719023198
 Prefab:

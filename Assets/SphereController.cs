@@ -6,6 +6,7 @@ using UnityEngine;
 public class SphereController : MonoBehaviour
 {
     public float Torque;
+    public float MaxAngularVelocity;
     public Camera Camera;
     private Rigidbody _rigidbody;
     private Vector3 _mousePos;
@@ -17,7 +18,7 @@ public class SphereController : MonoBehaviour
     {
 
         _rigidbody = GetComponent<Rigidbody>();
-        _rigidbody.maxAngularVelocity = 15;
+        _rigidbody.maxAngularVelocity = MaxAngularVelocity;
         _playerToCameraVector = Camera.transform.position - this.transform.position;
         _mousePos = Input.mousePosition;
         _initialAngularDrag = _rigidbody.angularDrag;
@@ -75,7 +76,8 @@ public class SphereController : MonoBehaviour
     {
         var mouseDelta = Input.mousePosition - _mousePos;
         var horizontalDelta = mouseDelta.x;
-        var rot = Quaternion.Euler(0, horizontalDelta, 0) * _playerToCameraVector;
+        var verticalDelta = mouseDelta.y;
+        var rot = Quaternion.Euler(-verticalDelta * 0.5f, horizontalDelta, 0) * _playerToCameraVector;
 
         Camera.transform.SetPositionAndRotation(this.transform.position + rot, Quaternion.identity);
         Camera.transform.LookAt(transform.position);
