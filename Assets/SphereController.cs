@@ -83,7 +83,7 @@ public class SphereController : MonoBehaviour
         var mouseDelta = Input.mousePosition - _mousePos;
         var horizontalDelta = mouseDelta.x;
         var verticalDelta = mouseDelta.y;
-        var rot = Quaternion.Euler(-verticalDelta * 0.5f, horizontalDelta, 0) * _playerToCameraVector;
+        var rot = Quaternion.Euler(0, horizontalDelta, -verticalDelta * 0.5f) * _playerToCameraVector;
 
         Camera.transform.SetPositionAndRotation(this.transform.position + rot, Quaternion.identity);
         Camera.transform.LookAt(transform.position);
