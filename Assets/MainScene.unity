@@ -20225,7 +20225,7 @@ Transform:
   m_GameObject: {fileID: 1718389983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.28, y: 0.6, z: 50.09}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -20256,7 +20256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa6b76d942f2bc4abe8e6e011ab859e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Torque: 10
+  Torque: 3
   MaxAngularVelocity: 20
   Camera: {fileID: 255775523}
   SpeedText: {fileID: 1408188993}

@@ -63,10 +63,14 @@ public class SphereController : MonoBehaviour
     {
         var vertical = Input.GetAxisRaw("Vertical");
         var horizontal = Input.GetAxisRaw("Horizontal");
-        _rigidbody.AddTorque(
-            (cameraToPlayer.z * vertical - cameraToPlayer.x * horizontal) * Torque, 
-            0, 
-            (-cameraToPlayer.x * vertical  - cameraToPlayer.z * horizontal) * Torque);
+        //_rigidbody.AddTorque(
+        //    (cameraToPlayer.z * vertical - cameraToPlayer.x * horizontal) * Torque, 
+        //    0, 
+        //    (-cameraToPlayer.x * vertical  - cameraToPlayer.z * horizontal) * Torque);
+        _rigidbody.AddForce(
+            (cameraToPlayer.x * vertical + cameraToPlayer.z * horizontal) * Torque,
+            0,
+            (cameraToPlayer.z * vertical - cameraToPlayer.x * horizontal) * Torque);
 
         if (Input.GetButton("Jump"))
         {
